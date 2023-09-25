@@ -1,0 +1,80 @@
+{
+    "data": [
+        {
+            "chainName": "arbitrum-one",
+            "chainId": 42161
+        },
+        {
+            "chainName": "aurora",
+            "chainId": 1313161554
+        },
+        {
+            "chainName": "avalanche",
+            "chainId": 43114
+        },
+        {
+            "chainName": "base",
+            "chainId": 8453
+        },
+        {
+            "chainName": "binance-smart-chain",
+            "chainId": 56
+        },
+        {
+            "chainName": "boba",
+            "chainId": 288
+        },
+        {
+            "chainName": "canto",
+            "chainId": "7700"
+        },
+        {
+            "chainName": "cronos",
+            "chainId": 25
+        },
+        {
+            "chainName": "defi-kingdoms-blockchain",
+            "chainId": 53935
+        },
+        {
+            "chainName": "dogechain",
+            "chainId": 2000
+        },
+        {
+            "chainName": "ethereum",
+            "chainId": 1
+        },
+        {
+            "chainName": "fantom",
+            "chainId": 250
+        },
+        {
+            "chainName": "harmony-shard-0",
+            "chainId": 1666600000
+        },
+        {
+            "chainName": "klay-token",
+            "chainId": 8217
+        },
+        {
+            "chainName": "metis-andromeda",
+            "chainId": 1088
+        },
+        {
+            "chainName": "moonbeam",
+            "chainId": 1284
+        },
+        {
+            "chainName": "moonriver",
+            "chainId": 1285
+        },
+        {
+            "chainName": "optimistic-ethereum",
+            "chainId": 10
+        },
+        {
+            "chainName": "polygon-pos",
+            "chainId": 137
+        }
+    ]
+}

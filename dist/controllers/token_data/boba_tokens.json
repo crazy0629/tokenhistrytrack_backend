@@ -1,0 +1,87 @@
+{
+    "name": "CoinGecko",
+    "logoURI": "https://www.coingecko.com/assets/thumbnail-007177f3eca19695592f0b8b0eabbdae282b54154e1be912285c9034ea6cbaf2.png",
+    "keywords": [
+        "defi"
+    ],
+    "timestamp": "2023-08-30T11:04:16.965+00:00",
+    "tokens": [
+        {
+            "chainId": 288,
+            "address": "0x5008f837883ea9a07271a1b5eb0658404f5a9610",
+            "name": "OolongSwap",
+            "symbol": "OLO",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/20637/thumb/Capture.PNG?1637427078"
+        },
+        {
+            "chainId": 288,
+            "address": "0x618cc6549ddf12de637d46cddadafc0c2951131c",
+            "name": "K y ",
+            "symbol": "KYO",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/25801/thumb/logo.png?1653970997"
+        },
+        {
+            "chainId": 288,
+            "address": "0x96821b258955587069f680729cd77369c0892b40",
+            "name": "Across Protocol",
+            "symbol": "ACX",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/28161/thumb/across-200x200.png?1668168201"
+        },
+        {
+            "chainId": 288,
+            "address": "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000",
+            "name": "WETH",
+            "symbol": "WETH",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/2518/thumb/weth.png?1628852295"
+        },
+        {
+            "chainId": 288,
+            "address": "0xe1e2ec9a85c607092668789581251115bcbd20de",
+            "name": "OMG Network",
+            "symbol": "OMG",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/776/thumb/OMG_Network.jpg?1591167168"
+        },
+        {
+            "chainId": 288,
+            "address": "0x66a2a913e447d6b4bf33efbec43aaef87890fbbc",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "logoURI": "https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png?1547042389"
+        },
+        {
+            "chainId": 288,
+            "address": "0xdc0486f8bf31df57a952bcd3c1d3e166e3d9ec8b",
+            "name": "Wrapped Bitcoin",
+            "symbol": "WBTC",
+            "decimals": 8,
+            "logoURI": "https://assets.coingecko.com/coins/images/7598/thumb/wrapped_bitcoin_wbtc.png?1548822744"
+        },
+        {
+            "chainId": 288,
+            "address": "0x5de1677344d3cb0d7d465c10b72a8f60699c062d",
+            "name": "Tether",
+            "symbol": "USDT",
+            "decimals": 6,
+            "logoURI": "https://assets.coingecko.com/coins/images/325/thumb/Tether.png?1668148663"
+        },
+        {
+            "chainId": 288,
+            "address": "0xa18bf3994c0cc6e3b63ac420308e5383f53120d7",
+            "name": "Boba Network",
+            "symbol": "BOBA",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/20285/thumb/Boba-200x200---white.png?1693383600"
+        }
+    ],
+    "version": {
+        "major": 9,
+        "minor": 0,
+        "patch": 1
+    }
+}
