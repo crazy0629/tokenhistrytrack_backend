@@ -1,0 +1,175 @@
+{
+    "name": "CoinGecko",
+    "logoURI": "https://www.coingecko.com/assets/thumbnail-007177f3eca19695592f0b8b0eabbdae282b54154e1be912285c9034ea6cbaf2.png",
+    "keywords": [
+        "defi"
+    ],
+    "timestamp": "2023-09-01T09:06:35.979+00:00",
+    "tokens": [
+        {
+            "chainId": 7700,
+            "address": "0xff0baf077e8035a3da0dd2abececfbd98d8e63be",
+            "name": "sCANTO BLOTR",
+            "symbol": "BLOTR",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/30434/thumb/Sheet_WIP.png?1684468046"
+        },
+        {
+            "chainId": 7700,
+            "address": "0x9f823d534954fc119e31257b3ddba0db9e2ff4ed",
+            "name": "Liquid Staked Canto",
+            "symbol": "SCANTO",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/30403/thumb/dsfaasd.png?1684372247"
+        },
+        {
+            "chainId": 7700,
+            "address": "0x8b6e422f7ef6c5dcc0ad0c3dea66efacbb2b78e3",
+            "name": "Matrix",
+            "symbol": "MATRIX",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/28989/thumb/m.png?1675819602"
+        },
+        {
+            "chainId": 7700,
+            "address": "0x7264610a66eca758a8ce95cf11ff5741e1fd0455",
+            "name": "Canto Inu",
+            "symbol": "CINU",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26987/thumb/u6XXfLNc_400x400.png?1661216841"
+        },
+        {
+            "chainId": 7700,
+            "address": "0xf2399c47d8631703b8f001caac936325181f892d",
+            "name": "Cantosino com",
+            "symbol": "SINO",
+            "decimals": 15,
+            "logoURI": "https://assets.coingecko.com/coins/images/29185/thumb/cantosino_%281%29.png?1677204780"
+        },
+        {
+            "chainId": 7700,
+            "address": "0xb5b060055f0d1ef5174329913ef861bc3addf029",
+            "name": "Velocimeter FLOW",
+            "symbol": "FLOW",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/29232/thumb/Flow-circle-aqua.png?1677543528"
+        },
+        {
+            "chainId": 7700,
+            "address": "0x9aeff862435cc243d12cee915e7129629c6a8d5d",
+            "name": "LeetSwap  Canto ",
+            "symbol": "LEET",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/31129/thumb/leet.png?1690856091"
+        },
+        {
+            "chainId": 7700,
+            "address": "0xc5b47a30f3e52aee781e5c6dcdf13de456814592",
+            "name": "CantoBelieve",
+            "symbol": "BELIEVE",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/28868/thumb/VI0Ckbrl_400x400.jpg?1675051457"
+        },
+        {
+            "chainId": 7700,
+            "address": "0xa025ced4aab666c1bbbfd5a224816705b438e50b",
+            "name": "Canto Shib",
+            "symbol": "CSHIB",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/29020/thumb/P4rr0xzp_400x400.jpg?1675941445"
+        },
+        {
+            "chainId": 7700,
+            "address": "0xf567ce29547a97c9f5ca3daf693f7e900877fff4",
+            "name": "Canto Crabs Chip",
+            "symbol": "CRAB",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/29022/thumb/cgcrab.png?1675997889"
+        },
+        {
+            "chainId": 7700,
+            "address": "0x4e71a2e537b7f9d9413d3991d37958c0b5e1e503",
+            "name": "Note",
+            "symbol": "NOTE",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26988/thumb/iShot_2022-08-23_09.17.46.png?1661217695"
+        },
+        {
+            "chainId": 7700,
+            "address": "0x533c0f08be45eaac821392b85e67fb0c7dc2cab7",
+            "name": "CantOHM",
+            "symbol": "COHM",
+            "decimals": 9,
+            "logoURI": "https://assets.coingecko.com/coins/images/28934/thumb/coingeckocantohm.png?1675501363"
+        },
+        {
+            "chainId": 7700,
+            "address": "0x09888c3a374ae99e271e1d8e7d9bb63738bffc87",
+            "name": "Cantosino com Profit Pass",
+            "symbol": "CPP",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/29204/thumb/cantosino.png?1677312706"
+        },
+        {
+            "chainId": 7700,
+            "address": "0x826551890dc65655a0aceca109ab11abdbd7a07b",
+            "name": "CANTO",
+            "symbol": "CANTO",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26959/thumb/canto-network.png?1661215219"
+        },
+        {
+            "chainId": 7700,
+            "address": "0xfbdd194376de19a88118e84e279b977f165d01b8",
+            "name": "Impermax",
+            "symbol": "IBEX",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/27606/thumb/IqwOmX-c_400x400.jpeg?1664846656"
+        },
+        {
+            "chainId": 7700,
+            "address": "0x80a16016cc4a2e6a2caca8a4a498b1699ff0f844",
+            "name": "MultiBTC",
+            "symbol": "MULTIBTC",
+            "decimals": 5,
+            "logoURI": "https://assets.coingecko.com/coins/images/29495/thumb/MultiBTC.png?1679364709"
+        },
+        {
+            "chainId": 7700,
+            "address": "0x5fd55a1b9fc24967c4db09c513c3ba0dfa7ff687",
+            "name": "WETH",
+            "symbol": "WETH",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/2518/thumb/weth.png?1628852295"
+        },
+        {
+            "chainId": 7700,
+            "address": "0xeceeefcee421d8062ef8d6b4d814efe4dc898265",
+            "name": "Cosmos Hub",
+            "symbol": "ATOM",
+            "decimals": 6,
+            "logoURI": "https://assets.coingecko.com/coins/images/1481/thumb/cosmos_hub.png?1555657960"
+        },
+        {
+            "chainId": 7700,
+            "address": "0x80b5a32e4f032b2a058b4f29ec95eefeeb87adcd",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "logoURI": "https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png?1547042389"
+        },
+        {
+            "chainId": 7700,
+            "address": "0xd567b3d7b8fe3c79a1ad8da978812cfc4fa05e75",
+            "name": "Tether",
+            "symbol": "USDT",
+            "decimals": 6,
+            "logoURI": "https://assets.coingecko.com/coins/images/325/thumb/Tether.png?1668148663"
+        }
+    ],
+    "version": {
+        "major": 2,
+        "minor": 0,
+        "patch": 0
+    }
+}

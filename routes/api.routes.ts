@@ -1,6 +1,6 @@
 import { Router } from "express";
 import * as wallet from "../controllers/walletList.controller";
-
+import * as token from "../controllers/token.controller";
 /**
  * Router
  * Using Passport
@@ -15,4 +15,7 @@ router.post("/walletList/remove", wallet.removeItem);
 router.post("/walletList/edit", wallet.editItem);
 router.post("/walletList/getAll", wallet.getAllWalletList);
 
+// Token Action Controller
+
+router.post("/tokenAction/viewData", token.viewData);
 export default router;

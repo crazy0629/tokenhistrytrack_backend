@@ -25,6 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const wallet = __importStar(require("../controllers/walletList.controller"));
+const token = __importStar(require("../controllers/token.controller"));
 /**
  * Router
  * Using Passport
@@ -35,4 +36,6 @@ router.post("/walletList/insert", wallet.addItem);
 router.post("/walletList/remove", wallet.removeItem);
 router.post("/walletList/edit", wallet.editItem);
 router.post("/walletList/getAll", wallet.getAllWalletList);
+// Token Action Controller
+router.post("/tokenAction/viewData", token.viewData);
 exports.default = router;

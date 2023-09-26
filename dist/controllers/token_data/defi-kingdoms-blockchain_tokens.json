@@ -1,0 +1,31 @@
+{
+    "name": "CoinGecko",
+    "logoURI": "https://www.coingecko.com/assets/thumbnail-007177f3eca19695592f0b8b0eabbdae282b54154e1be912285c9034ea6cbaf2.png",
+    "keywords": [
+        "defi"
+    ],
+    "timestamp": "2023-06-19T09:05:44.535+00:00",
+    "tokens": [
+        {
+            "chainId": null,
+            "address": "0x04b9da42306b023f3572e106b11d82aad9d32ebb",
+            "name": "DeFi Kingdoms Crystal",
+            "symbol": "CRYSTAL",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/24741/thumb/DFK_Crystal_Token_Logo.351435c0.png?1648780447"
+        },
+        {
+            "chainId": null,
+            "address": "0xb57b60debdb0b8172bb6316a9164bd3c695f133a",
+            "name": "Wrapped AVAX",
+            "symbol": "WAVAX",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/15075/thumb/wrapped-avax.png?1629873618"
+        }
+    ],
+    "version": {
+        "major": 2,
+        "minor": 0,
+        "patch": 0
+    }
+}

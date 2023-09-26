@@ -1,0 +1,335 @@
+{
+    "name": "CoinGecko",
+    "logoURI": "https://www.coingecko.com/assets/thumbnail-007177f3eca19695592f0b8b0eabbdae282b54154e1be912285c9034ea6cbaf2.png",
+    "keywords": [
+        "defi"
+    ],
+    "timestamp": "2023-09-14T08:00:22.310+00:00",
+    "tokens": [
+        {
+            "chainId": 1313161554,
+            "address": "0x09c9d464b58d96837f8d8b6f4d9fe4ad408d3a4f",
+            "name": "Aurigami",
+            "symbol": "PLY",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/24074/thumb/EbB5N8IN_400x400.jpg?1646230298"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x802119e4e253d5c19aa06a5d567c5a41596d6803",
+            "name": "Tribar",
+            "symbol": "XTRI",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/25526/thumb/logo.png?1652237914"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x184f2c422dc49d0df6977e6079c73f731b7bf94e",
+            "name": "PinkPea Finance",
+            "symbol": "PEA",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/25840/thumb/pea-big.1f28f16.png?1654077801"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x68e401b61ea53889505cc1366710f733a60c2d41",
+            "name": "Shitzu",
+            "symbol": "SHITZU",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/24857/thumb/sFChtaUA_400x400.jpg?1649141749"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x06aebb0f3d9ebe9829e1b67bd3dd608f711d3412",
+            "name": "NEARStarter",
+            "symbol": "NSTART",
+            "decimals": 24,
+            "logoURI": "https://assets.coingecko.com/coins/images/28891/thumb/undefined_-_Imgur.png?1675157177"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x34f291934b88c7870b7a17835b926b264fc13a81",
+            "name": "SmartPad",
+            "symbol": "PAD",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/25860/thumb/wMTpRljt_400x400.png?1654227382"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xdcd6d4e2b3e1d1e1e6fa8c21c8a323dcbecff970",
+            "name": "Rose",
+            "symbol": "ROSE",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/22104/thumb/rose.PNG?1640827477"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xc42c30ac6cc15fac9bd938618bcaa1a1fae8501d",
+            "name": "Wrapped Near",
+            "symbol": "WNEAR",
+            "decimals": 24,
+            "logoURI": "https://assets.coingecko.com/coins/images/18280/thumb/EX4mrWMW_400x400.jpg?1631244046"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xc21ff01229e982d7c8b8691163b0a3cb8f357453",
+            "name": "Meta Pool",
+            "symbol": "META",
+            "decimals": 24,
+            "logoURI": "https://assets.coingecko.com/coins/images/24249/thumb/aB2d0Nmn_400x400.png?1657277012"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xfa94348467f64d5a457f75f8bc40495d33c65abb",
+            "name": "Trisolaris",
+            "symbol": "TRI",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/20607/thumb/logo_-_2021-11-19T104946.772.png?1637290197"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x4148d2ce7816f0ae378d98b40eb3a7211e1fcf0d",
+            "name": "BlueBit",
+            "symbol": "BBT",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/24565/thumb/bluebit_image.png?1648191290"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x0017be3e7e36abf49fe67a78d08bf465bb755120",
+            "name": "AmaterasuFi Izanagi",
+            "symbol": "IZA",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/25859/thumb/spaces_ebXpMFLzH2sowWKTINL3_uploads_git-blob-99be8625d129c1d92248059e04dffebe380e34b7_Izanagi_light_blue_-_transparent_%282%29.png?1654214255"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xf0f3b9eee32b1f490a4b8720cf6f005d4ae9ea86",
+            "name": "Polaris Finance Polar",
+            "symbol": "POLAR",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/23672/thumb/polar-200px.png?1644994537"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x12c87331f086c3c926248f964f8702c0842fd77f",
+            "name": "Borealis",
+            "symbol": "BRL",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/22089/thumb/auroraswap.png?1640774528"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x2451db68ded81900c4f16ae1af597e9658689734",
+            "name": "Vaporwave",
+            "symbol": "VWAVE",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26307/thumb/VWAVE-200.png?1657181540"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x7faa64faf54750a2e3ee621166635feaf406ab22",
+            "name": "WannaSwap",
+            "symbol": "WANNA",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/21955/thumb/wannaswap.PNG?1640337839"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xa69d9ba086d41425f35988613c156db9a88a1a96",
+            "name": "USP",
+            "symbol": "USP",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26322/thumb/usp-200px.png?1657245772"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xeaf7665969f1daa3726ceada7c40ab27b3245993",
+            "name": "XPOLAR",
+            "symbol": "XPOLAR",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/30766/thumb/XPOLAR_LOGO.png?1686902560"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x07f9f7f963c5cd2bbffd30ccfb964be114332e30",
+            "name": "Staked NEAR",
+            "symbol": "STNEAR",
+            "decimals": 24,
+            "logoURI": "https://assets.coingecko.com/coins/images/24250/thumb/st-NEAR-token-white-dark-purple-circle.png?1657601407"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x918dbe087040a41b786f0da83190c293dae24749",
+            "name": "LiNEAR Protocol",
+            "symbol": "LINEAR",
+            "decimals": 24,
+            "logoURI": "https://assets.coingecko.com/coins/images/25210/thumb/sUld7aEX_400x400.png?1650855376"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xea62791aa682d455614eaa2a12ba3d9a2fd197af",
+            "name": "SEDA Protocol",
+            "symbol": "FLX",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/21137/thumb/flx.png?1674306547"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x7ea2be2df7ba6e54b1a9c70676f668455e329d29",
+            "name": "0xMonero",
+            "symbol": "0XMR",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/11035/thumb/0xmnr.PNG?1587357680"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xc9bdeed33cd01541e1eed10f90519d2c06fe3feb",
+            "name": "WETH",
+            "symbol": "WETH",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/2518/thumb/weth.png?1628852295"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xb12bfca5a55806aaf64e99521918a4bf0fc40802",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "logoURI": "https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png?1547042389"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x8bec47865ade3b172a928df8f990bc7f2a3b9f79",
+            "name": "Aurora",
+            "symbol": "AURORA",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/20582/thumb/aurora.jpeg?1637250883"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x5ce9f0b6afb36135b5ddbf11705ceb65e634a9dc",
+            "name": "Wrapped USTC",
+            "symbol": "USTC",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/15462/thumb/ust.png?1620910058"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xf4eb217ba2454613b15dbdea6e5f22276410e89e",
+            "name": "Wrapped Bitcoin",
+            "symbol": "WBTC",
+            "decimals": 8,
+            "logoURI": "https://assets.coingecko.com/coins/images/7598/thumb/wrapped_bitcoin_wbtc.png?1548822744"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xe3520349f477a5f6eb06107066048508498a291b",
+            "name": "Dai",
+            "symbol": "DAI",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/9956/thumb/Badge_Dai.png?1687143508"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xc4bdd27c33ec7daa6fcfd8532ddb524bf4038096",
+            "name": "Wrapped Terra Classic",
+            "symbol": "LUNC",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/13628/thumb/wluna.png?1610448334"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x2bae00c8bc1868a5f7a216e881bae9e662630111",
+            "name": "Allbridge",
+            "symbol": "ABR",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/18690/thumb/abr.png?1640742053"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x885f8cf6e45bdd3fdcdc644efdcd0ac93880c781",
+            "name": "Pad Fi",
+            "symbol": "PAD",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/18117/thumb/pad.fi.png?1677317189"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x291c8fceaca3342b29cc36171deb98106f712c66",
+            "name": "Pickle Finance",
+            "symbol": "PICKLE",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/12435/thumb/0M4W6Yr6_400x400.jpg?1643006080"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xe301ed8c7630c9678c39e4e45193d1e7dfb914f7",
+            "name": "DODO",
+            "symbol": "DODO",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/12651/thumb/dodo_logo.png?1601433025"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x218c3c3d49d0e7b37aff0d8bb079de36ae61a4c0",
+            "name": "Beefy",
+            "symbol": "BIFI",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/12704/thumb/token.png?1601876182"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x4988a896b1227218e4a686fde5eabdcabd91571f",
+            "name": "Tether",
+            "symbol": "USDT",
+            "decimals": 6,
+            "logoURI": "https://assets.coingecko.com/coins/images/325/thumb/Tether.png?1668148663"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x7ca1c28663b76cfde424a9494555b94846205585",
+            "name": "Chronicle",
+            "symbol": "XNL",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/18413/thumb/xnl_logo.png?1633517024"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xdfa46478f9e5ea86d57387849598dbfb2e964b02",
+            "name": "MAI",
+            "symbol": "MIMATIC",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/15264/thumb/mimatic-red.png?1620281018"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0x8973c9ec7b79fe880697cdbca744892682764c37",
+            "name": "Baked",
+            "symbol": "BAKED",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/19178/thumb/rebaked-logo-full.png?1634613132"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xe8532e5514d9f80c7d0b1f29948873ee59fb5b06",
+            "name": "Alium Finance",
+            "symbol": "ALM",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/15621/thumb/alium.png?1655449806"
+        },
+        {
+            "chainId": 1313161554,
+            "address": "0xb39eeb9e168ef6c639f5e282fef1f6bc4dcae375",
+            "name": "Stader NearX",
+            "symbol": "NEARX",
+            "decimals": 24,
+            "logoURI": "https://assets.coingecko.com/coins/images/27787/thumb/Nearx.png?1674714238"
+        }
+    ],
+    "version": {
+        "major": 27,
+        "minor": 0,
+        "patch": 0
+    }
+}

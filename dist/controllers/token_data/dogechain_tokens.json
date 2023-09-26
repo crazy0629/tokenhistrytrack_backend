@@ -1,0 +1,175 @@
+{
+    "name": "CoinGecko",
+    "logoURI": "https://www.coingecko.com/assets/thumbnail-007177f3eca19695592f0b8b0eabbdae282b54154e1be912285c9034ea6cbaf2.png",
+    "keywords": [
+        "defi"
+    ],
+    "timestamp": "2023-08-22T10:04:35.850+00:00",
+    "tokens": [
+        {
+            "chainId": null,
+            "address": "0x2be0096b24343549e34224aa9aa297e99961023d",
+            "name": "DogeShrek",
+            "symbol": "DOGESHREK",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26888/thumb/rcy5TkPI_400x400.jpeg?1660701852"
+        },
+        {
+            "chainId": null,
+            "address": "0x8a764cf73438de795c98707b07034e577af54825",
+            "name": "Doge Inu",
+            "symbol": "DINU",
+            "decimals": 4,
+            "logoURI": "https://assets.coingecko.com/coins/images/27001/thumb/IMG_20230331_120030_628.jpg?1681127143"
+        },
+        {
+            "chainId": null,
+            "address": "0x7b4328c127b85369d9f82ca0503b000d09cf9180",
+            "name": "Dogechain",
+            "symbol": "DC",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26828/thumb/dogechain.jpeg?1660292741"
+        },
+        {
+            "chainId": null,
+            "address": "0x1b15b9446b9f632a78396a1680daae17f74ce8d9",
+            "name": "Doge Pup",
+            "symbol": "DOGEPUP",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26930/thumb/dogepup_logo.png?1660881524"
+        },
+        {
+            "chainId": null,
+            "address": "0x6fc4563460d5f45932c473334d5c1c5b4aea0e01",
+            "name": "YodeSwap",
+            "symbol": "YODE",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26944/thumb/yodeswap.png?1661310563"
+        },
+        {
+            "chainId": null,
+            "address": "0xb9fcaa7590916578087842e017078d7797fa18d0",
+            "name": "DogeTools",
+            "symbol": "DTOOLS",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/30111/thumb/BuquS7nr_400x400.jpg?1683111196"
+        },
+        {
+            "chainId": null,
+            "address": "0x3f4ae49eabea4cc250a640eea788a321c0ae7eb2",
+            "name": "Poo Doge",
+            "symbol": "POODOGE",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26999/thumb/A8308774-23F8-4367-9679-F8383A021498.png?1662364678"
+        },
+        {
+            "chainId": null,
+            "address": "0xa98fa09d0bed62a9e0fb2e58635b7c9274160dc7",
+            "name": "Fruits of Ryoshi",
+            "symbol": "YUZU",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26911/thumb/GMBI-logo-of-Yuzu-fruit-as-japanese-style-art-9fac7fe6-37c3-4fd2-af00-6d56d1db8cdf.png?1660785001"
+        },
+        {
+            "chainId": null,
+            "address": "0xbfbb7b1d22ff521a541170cafe0c9a7f20d09c3b",
+            "name": "Egod The Savior",
+            "symbol": "SAVIOR",
+            "decimals": 0,
+            "logoURI": "https://assets.coingecko.com/coins/images/27183/thumb/2022-09-02_21.06.16.jpg?1662428906"
+        },
+        {
+            "chainId": null,
+            "address": "0xb7ddc6414bf4f5515b52d8bdd69973ae205ff101",
+            "name": "Wrapped WDOGE",
+            "symbol": "WWDOGE",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26884/thumb/hb8hQIWP_400x400.jpeg?1660649560"
+        },
+        {
+            "chainId": null,
+            "address": "0x582daef1f36d6009f64b74519cfd612a8467be18",
+            "name": "DogeDragon",
+            "symbol": "DD",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/27094/thumb/dragon-doge-logo.84e6ed7e.png?1661994325"
+        },
+        {
+            "chainId": null,
+            "address": "0x1e1026ba0810e6391b0f86afa8a9305c12713b66",
+            "name": "KibbleSwap",
+            "symbol": "KIB",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26929/thumb/Kibble-Token-200px-Round.png?1660881192"
+        },
+        {
+            "chainId": null,
+            "address": "0xe3fca919883950c5cd468156392a6477ff5d18de",
+            "name": "Doge Eat Doge",
+            "symbol": "OMNOM",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26878/thumb/omnom.jpg?1660633999"
+        },
+        {
+            "chainId": null,
+            "address": "0x2f90907fd1dc1b7a484b6f31ddf012328c2bab28",
+            "name": "Grimace",
+            "symbol": "GRIMACE",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/30957/thumb/Grimace.png?1689217330"
+        },
+        {
+            "chainId": null,
+            "address": "0x81bcea03678d1cef4830942227720d542aa15817",
+            "name": "IceCreamSwap",
+            "symbol": "ICE",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26237/thumb/icecream.png?1656902080"
+        },
+        {
+            "chainId": null,
+            "address": "0xf480f38c366daac4305dc484b2ad7a496ff00cea",
+            "name": "Dogira",
+            "symbol": "DOGIRA",
+            "decimals": 9,
+            "logoURI": "https://assets.coingecko.com/coins/images/14634/thumb/IQgaRw0.png?1622439620"
+        },
+        {
+            "chainId": null,
+            "address": "0x765277eebeca2e31912c9946eae1021199b39c61",
+            "name": "USD Coin",
+            "symbol": "USDC",
+            "decimals": 6,
+            "logoURI": "https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png?1547042389"
+        },
+        {
+            "chainId": null,
+            "address": "0xb12c13e66ade1f72f71834f2fc5082db8c091358",
+            "name": "Quickswap",
+            "symbol": "QUICK",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/25393/thumb/quickswap.png?1688669381"
+        },
+        {
+            "chainId": null,
+            "address": "0xb44a9b6905af7c801311e8f4e76932ee959c663c",
+            "name": "WETH",
+            "symbol": "WETH",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/2518/thumb/weth.png?1628852295"
+        },
+        {
+            "chainId": null,
+            "address": "0x264c1383ea520f73dd837f915ef3a732e204a493",
+            "name": "Duckereum",
+            "symbol": "DUCKER",
+            "decimals": 18,
+            "logoURI": "https://assets.coingecko.com/coins/images/26325/thumb/coin.png?1669981187"
+        }
+    ],
+    "version": {
+        "major": 11,
+        "minor": 0,
+        "patch": 0
+    }
+}
