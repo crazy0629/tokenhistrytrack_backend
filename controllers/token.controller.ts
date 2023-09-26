@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import * as chainList from "../service/chainInfo.json";
 import TokenInfo from "../models/TokenInfo";
+import WalletList from "../models/WalletList";
 import { ITokenInfo } from "../service/interfaces";
 
 const ethers = require("ethers");
@@ -93,9 +94,14 @@ const getTokenInfo = async (
   tokenImage: string,
   tokenAddress: string,
   tokenSymbol: string,
-  blockNumber: number
+  blockNumber: number,
+  tokenJsonData: Array<Object>,
+  blockNumberJsonData: Array<Object>,
+  index: number,
+  ind: number,
+  res: Response
 ) => {
-  TokenInfo.findOne({
+  await TokenInfo.findOne({
     chainId: chainId,
     walletAddress: walletAddress,
     date: date,
@@ -110,39 +116,104 @@ const getTokenInfo = async (
         tokenAmount: model.tokenAmount,
         tokenPrice: model.tokenPrice,
       };
-      return tokenInfoData;
+      await getTokenInfoFunc(
+        tokenJsonData,
+        blockNumberJsonData,
+        index,
+        ind + 1,
+        chainId,
+        walletAddress,
+        res
+      );
     } else {
-      let tokenAmount = -1;
-      if (blockNumber != -2) {
-        tokenAmount = await getTokenAmount(
-          Number(chainId),
-          tokenAddress,
+      setTimeout(async () => {
+        let tokenAmount = -1;
+        if (blockNumber != -2) {
+          tokenAmount = await getTokenAmount(
+            Number(chainId),
+            tokenAddress,
+            walletAddress,
+            Number(blockNumber)
+          );
+        }
+        const coinId = await getCoinId(tokenName, tokenSymbol);
+        const tokenPrice = await getTokenPriceAtDate(coinId, date);
+        const tokenInfoData = {
+          tokenAmount: tokenAmount,
+          tokenPrice: tokenPrice,
+        };
+        if (model && model.date == "now") {
+          model.tokenImage = tokenImage;
+          model.tokenPrice = tokenPrice;
+          await model.save();
+        } else {
+          model = new TokenInfo();
+          model.chainId = chainId;
+          model.walletAddress = walletAddress;
+          model.date = date;
+          model.tokenName = tokenName;
+          model.tokenAddr = tokenAddress;
+          model.tokenSymbol = tokenSymbol;
+          model.blockNumber = blockNumber;
+          model.tokenAmount = tokenAmount;
+          model.tokenImage = tokenImage;
+          model.tokenPrice = tokenPrice;
+          await model.save();
+        }
+        await getTokenInfoFunc(
+          tokenJsonData,
+          blockNumberJsonData,
+          index,
+          ind + 1,
+          chainId,
           walletAddress,
-          Number(blockNumber)
+          res
         );
-      }
-      const coinId = await getCoinId(tokenName, tokenSymbol);
-      const tokenPrice = await getTokenPriceAtDate(coinId, date);
-      const tokenInfoData = {
-        tokenAmount: tokenAmount,
-        tokenPrice: tokenPrice,
-      };
-      model = new TokenInfo();
-      model.chainId = chainId;
-      model.walletAddress = walletAddress;
-      model.date = date;
-      model.tokenName = tokenName;
-      model.tokenAddr = tokenAddress;
-      model.tokenSymbol = tokenSymbol;
-      model.blockNumber = blockNumber;
-      model.tokenAmount = tokenAmount;
-      model.tokenImage = tokenImage;
-      model.tokenPrice = tokenPrice;
-      await model.save();
-      console.log("One document addeded");
-      return tokenInfoData;
+      }, 1000);
     }
   });
+};
+
+const getTokenInfoFunc = async (
+  tokenJsonData: Array<Object>,
+  blockNumberJsonData: Array<Object>,
+  index: number,
+  ind: number,
+  chainId: number,
+  walletAddress: string,
+  res: Response
+) => {
+  console.log(tokenJsonData.length);
+  console.log(index, ind);
+  if (ind == blockNumberJsonData.length) {
+    ind = 0;
+    index += 1;
+  }
+
+  if (index == tokenJsonData.length) {
+    return res.json({
+      success: "true",
+      data: { tokenJsonData, chainId, blockNumberJsonData },
+    });
+  }
+
+  const tokenItem: any = tokenJsonData[index];
+  const blockInfoItem: any = blockNumberJsonData[ind];
+  await getTokenInfo(
+    Number(chainId),
+    walletAddress,
+    blockInfoItem.date,
+    tokenItem.name,
+    tokenItem.logoURI,
+    tokenItem.address,
+    tokenItem.symbol,
+    Number(blockInfoItem.value),
+    tokenJsonData,
+    blockNumberJsonData,
+    index,
+    ind,
+    res
+  );
 };
 
 const readTokenInfo = async (
@@ -176,38 +247,16 @@ const readTokenInfo = async (
             });
             return;
           }
-          const blockNumberJsonData = JSON.parse(data).data;
-          let resultData: Array<Object> = [];
-          await tokenJsonData.map((item: any) => {
-            Object.entries(blockNumberJsonData).forEach(
-              async ([key, value]) => {
-                await setTimeout(async () => {
-                  const data: any = await getTokenInfo(
-                    chainId,
-                    walletAddress,
-                    key,
-                    item.tokenName,
-                    item.tokenImage,
-                    item.tokenAddress,
-                    item.tokenSymbol,
-                    Number(value)
-                  );
-                  resultData.push({
-                    ...item,
-                    date: key,
-                    chainId,
-                    walletAddress,
-                    tokenAmount: data.tokenAmount,
-                    tokenPrice: data.tokenPrice,
-                  });
-                }, 1000);
-              }
-            );
-          });
-          return res.json({
-            success: "true",
-            data: { tokenJsonData, chainId, resultData },
-          });
+          const blockNumberJsonData = JSON.parse(data);
+          getTokenInfoFunc(
+            tokenJsonData,
+            blockNumberJsonData,
+            0,
+            0,
+            Number(chainId),
+            walletAddress,
+            res
+          );
         }
       );
     }
