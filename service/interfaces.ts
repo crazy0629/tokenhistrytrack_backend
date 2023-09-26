@@ -8,6 +8,7 @@ import { Document } from "mongoose";
 export interface IWalletList extends Document {
   walletAddress: string;
   chainName: string;
+  isVisited: boolean;
 }
 
 export interface ITokenInfo extends Document {

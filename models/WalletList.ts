@@ -8,6 +8,7 @@ const WalletListSchema = new Schema(
   {
     walletAddress: { type: String, required: true },
     chainName: { type: String, required: true },
+    isVisited: { type: Boolean, required: true },
   },
   { timestamps: true }
 );

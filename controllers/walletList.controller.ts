@@ -9,6 +9,7 @@ import WalletList from "../models/WalletList";
 //     let model = new WalletList();
 //     model.walletAddress = item.walletAddress;
 //     model.chainName = item.chainName;
+//     model.isVisited = false;
 //     await model.save();
 //   });
 // };
@@ -31,6 +32,7 @@ export const addItem = async (req: Request, res: Response) => {
     model = new WalletList();
     model.walletAddress = req.body.walletAddress;
     model.chainName = req.body.chainName;
+    model.isVisited = false;
     model.save().then(() => {
       res.json({ success: true, model, message: "Successfully added" });
     });
