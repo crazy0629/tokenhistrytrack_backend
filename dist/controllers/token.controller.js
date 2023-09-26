@@ -55,17 +55,22 @@ const viewData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.viewData = viewData;
 const getCoinId = (tokenName, tokenSymbol) => __awaiter(void 0, void 0, void 0, function* () {
-    const url = `https://api.coingecko.com/api/v3/coins/list?include_platform=false`;
-    const response = yield axios.get(url);
-    const data = response.data;
-    for (let i = 0; i < data.length; i++) {
-        const coin = data[i];
-        if (coin.symbol.toLowerCase() == tokenSymbol.toLowerCase() &&
-            coin.name.replaceAll("-", " ").toLowerCase() == tokenName.toLowerCase()) {
-            return coin.id;
+    try {
+        const url = `https://api.coingecko.com/api/v3/coins/list?include_platform=false`;
+        const response = yield axios.get(url);
+        const data = response.data;
+        for (let i = 0; i < data.length; i++) {
+            const coin = data[i];
+            if (coin.symbol.toLowerCase() == tokenSymbol.toLowerCase() &&
+                coin.name.replaceAll("-", " ").toLowerCase() == tokenName.toLowerCase()) {
+                return coin.id;
+            }
         }
+        return null;
     }
-    return null;
+    catch (error) {
+        return "";
+    }
 });
 const getTokenPriceAtDate = (coinId, date) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -95,8 +100,8 @@ const getTokenPriceAtDate = (coinId, date) => __awaiter(void 0, void 0, void 0, 
         return -1;
     }
 });
-const getTokenInfo = (chainId, walletAddress, date, tokenName, tokenImage, tokenAddress, tokenSymbol, blockNumber) => __awaiter(void 0, void 0, void 0, function* () {
-    TokenInfo_1.default.findOne({
+const getTokenInfo = (chainId, walletAddress, date, tokenName, tokenImage, tokenAddress, tokenSymbol, blockNumber, tokenJsonData, blockNumberJsonData, index, ind, res) => __awaiter(void 0, void 0, void 0, function* () {
+    yield TokenInfo_1.default.findOne({
         chainId: chainId,
         walletAddress: walletAddress,
         date: date,
@@ -111,38 +116,60 @@ const getTokenInfo = (chainId, walletAddress, date, tokenName, tokenImage, token
                 tokenAmount: model.tokenAmount,
                 tokenPrice: model.tokenPrice,
             };
-            return tokenInfoData;
+            yield getTokenInfoFunc(tokenJsonData, blockNumberJsonData, index, ind + 1, chainId, walletAddress, res);
         }
         else {
-            let tokenAmount = -1;
-            if (blockNumber != -2) {
-                tokenAmount = yield getTokenAmount(Number(chainId), tokenAddress, walletAddress, Number(blockNumber));
-            }
-            const coinId = yield getCoinId(tokenName, tokenSymbol);
-            const tokenPrice = yield getTokenPriceAtDate(coinId, date);
-            console.log("krs", tokenAmount, tokenPrice);
-            const tokenInfoData = {
-                tokenAmount: tokenAmount,
-                tokenPrice: tokenPrice,
-            };
-            if (tokenPrice == -1 || tokenAmount == -1) {
-                return -1;
-            }
-            model = new TokenInfo_1.default();
-            model.chainId = chainId;
-            model.walletAddress = walletAddress;
-            model.date = date;
-            model.tokenName = tokenName;
-            model.tokenAddr = tokenAddress;
-            model.tokenSymbol = tokenSymbol;
-            model.blockNumber = blockNumber;
-            model.tokenAmount = tokenAmount;
-            model.tokenImage = tokenImage;
-            model.tokenPrice = tokenPrice;
-            yield model.save();
-            return tokenInfoData;
+            setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
+                let tokenAmount = -1;
+                if (blockNumber != -2) {
+                    tokenAmount = yield getTokenAmount(Number(chainId), tokenAddress, walletAddress, Number(blockNumber));
+                }
+                const coinId = yield getCoinId(tokenName, tokenSymbol);
+                const tokenPrice = yield getTokenPriceAtDate(coinId, date);
+                const tokenInfoData = {
+                    tokenAmount: tokenAmount,
+                    tokenPrice: tokenPrice,
+                };
+                if (model && model.date == "now") {
+                    model.tokenImage = tokenImage;
+                    model.tokenPrice = tokenPrice;
+                    yield model.save();
+                }
+                else {
+                    model = new TokenInfo_1.default();
+                    model.chainId = chainId;
+                    model.walletAddress = walletAddress;
+                    model.date = date;
+                    model.tokenName = tokenName;
+                    model.tokenAddr = tokenAddress;
+                    model.tokenSymbol = tokenSymbol;
+                    model.blockNumber = blockNumber;
+                    model.tokenAmount = tokenAmount;
+                    model.tokenImage = tokenImage;
+                    model.tokenPrice = tokenPrice;
+                    yield model.save();
+                }
+                yield getTokenInfoFunc(tokenJsonData, blockNumberJsonData, index, ind + 1, chainId, walletAddress, res);
+            }), 1000);
         }
     }));
+});
+const getTokenInfoFunc = (tokenJsonData, blockNumberJsonData, index, ind, chainId, walletAddress, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(tokenJsonData.length);
+    console.log(index, ind);
+    if (ind == blockNumberJsonData.length) {
+        ind = 0;
+        index += 1;
+    }
+    if (index == tokenJsonData.length) {
+        return res.json({
+            success: "true",
+            data: { tokenJsonData, chainId, blockNumberJsonData },
+        });
+    }
+    const tokenItem = tokenJsonData[index];
+    const blockInfoItem = blockNumberJsonData[ind];
+    yield getTokenInfo(Number(chainId), walletAddress, blockInfoItem.date, tokenItem.name, tokenItem.logoURI, tokenItem.address, tokenItem.symbol, Number(blockInfoItem.value), tokenJsonData, blockNumberJsonData, index, ind, res);
 });
 const readTokenInfo = (chainId, chainName, walletAddress, res) => __awaiter(void 0, void 0, void 0, function* () {
     const rootPath = path.resolve(__dirname);
@@ -155,7 +182,7 @@ const readTokenInfo = (chainId, chainName, walletAddress, res) => __awaiter(void
             return;
         }
         const tokenJsonData = JSON.parse(data).tokens;
-        yield fs.readFile(`${rootPath}\\block_number\\${chainName}.json`, "utf8", (err, data) => {
+        yield fs.readFile(`${rootPath}\\block_number\\${chainName}.json`, "utf8", (err, data) => __awaiter(void 0, void 0, void 0, function* () {
             if (err) {
                 res.json({
                     success: "false",
@@ -163,19 +190,9 @@ const readTokenInfo = (chainId, chainName, walletAddress, res) => __awaiter(void
                 });
                 return;
             }
-            const blockNumberJsonData = JSON.parse(data).data;
-            tokenJsonData.map((item) => {
-                Object.entries(blockNumberJsonData).forEach(([key, value]) => __awaiter(void 0, void 0, void 0, function* () {
-                    yield setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
-                        const data = yield getTokenInfo(chainId, walletAddress, key, item.tokenName, item.tokenImage, item.tokenAddress, item.tokenSymbol, Number(value));
-                    }), 1000);
-                }));
-            });
-            return res.json({
-                success: "true",
-                data: { tokenJsonData, chainId, blockNumberJsonData },
-            });
-        });
+            const blockNumberJsonData = JSON.parse(data);
+            getTokenInfoFunc(tokenJsonData, blockNumberJsonData, 0, 0, Number(chainId), walletAddress, res);
+        }));
     }));
 });
 const getTokenAmount = (chainId, tokenAddress, walletAddress, blockNumber) => __awaiter(void 0, void 0, void 0, function* () {
