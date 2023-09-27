@@ -183,37 +183,52 @@ const getTokenInfoFunc = async (
   walletAddress: string,
   res: Response
 ) => {
-  console.log(tokenJsonData.length);
-  console.log(index, ind);
   if (ind == blockNumberJsonData.length) {
     ind = 0;
     index += 1;
   }
-
   if (index == tokenJsonData.length) {
-    return res.json({
-      success: "true",
-      data: { tokenJsonData, chainId, blockNumberJsonData },
-    });
-  }
+    const chainName = chainList.data.filter(
+      (item) => item.chainId == chainId
+    )[0].chainName;
+    WalletList.findOne({
+      walletAddress: walletAddress,
+      chainName: chainName,
+    }).then(async (model: any) => {
+      if (!model)
+        res.json({ success: false, message: "The WalletList not exits!" });
 
-  const tokenItem: any = tokenJsonData[index];
-  const blockInfoItem: any = blockNumberJsonData[ind];
-  await getTokenInfo(
-    Number(chainId),
-    walletAddress,
-    blockInfoItem.date,
-    tokenItem.name,
-    tokenItem.logoURI,
-    tokenItem.address,
-    tokenItem.symbol,
-    Number(blockInfoItem.value),
-    tokenJsonData,
-    blockNumberJsonData,
-    index,
-    ind,
-    res
-  );
+      model.isVisited = true;
+      await model.save();
+    });
+
+    TokenInfo.find({ walletAddress, chainId }).then((models: any) => {
+      return res.json({
+        success: "true",
+        data: { tokenJsonData, chainId, models },
+      });
+    });
+  } else {
+    console.log(tokenJsonData.length);
+    console.log(index, ind);
+    const tokenItem: any = tokenJsonData[index];
+    const blockInfoItem: any = blockNumberJsonData[ind];
+    await getTokenInfo(
+      Number(chainId),
+      walletAddress,
+      blockInfoItem.date,
+      tokenItem.name,
+      tokenItem.logoURI,
+      tokenItem.address,
+      tokenItem.symbol,
+      Number(blockInfoItem.value),
+      tokenJsonData,
+      blockNumberJsonData,
+      index,
+      ind,
+      res
+    );
+  }
 };
 
 const readTokenInfo = async (
@@ -248,15 +263,39 @@ const readTokenInfo = async (
             return;
           }
           const blockNumberJsonData = JSON.parse(data);
-          getTokenInfoFunc(
-            tokenJsonData,
-            blockNumberJsonData,
-            0,
-            0,
-            Number(chainId),
-            walletAddress,
-            res
-          );
+          const chainName = chainList.data.filter(
+            (item) => item.chainId == chainId
+          )[0].chainName;
+          await WalletList.findOne({
+            walletAddress: walletAddress,
+            chainName: chainName,
+          }).then(async (model: any) => {
+            if (!model)
+              res.json({
+                success: false,
+                message: "The WalletList not exits!",
+              });
+            if (model.isVisited == true) {
+              await TokenInfo.find({ walletAddress, chainId }).then(
+                (models: any) => {
+                  return res.json({
+                    success: "true",
+                    data: { tokenJsonData, chainId, models },
+                  });
+                }
+              );
+            } else {
+              getTokenInfoFunc(
+                tokenJsonData,
+                blockNumberJsonData,
+                0,
+                0,
+                Number(chainId),
+                walletAddress,
+                res
+              );
+            }
+          });
         }
       );
     }

@@ -38,6 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.viewData = void 0;
 const chainList = __importStar(require("../service/chainInfo.json"));
 const TokenInfo_1 = __importDefault(require("../models/TokenInfo"));
+const WalletList_1 = __importDefault(require("../models/WalletList"));
 const ethers = require("ethers");
 const fs = require("fs");
 const path = require("path");
@@ -155,21 +156,35 @@ const getTokenInfo = (chainId, walletAddress, date, tokenName, tokenImage, token
     }));
 });
 const getTokenInfoFunc = (tokenJsonData, blockNumberJsonData, index, ind, chainId, walletAddress, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(tokenJsonData.length);
-    console.log(index, ind);
     if (ind == blockNumberJsonData.length) {
         ind = 0;
         index += 1;
     }
     if (index == tokenJsonData.length) {
-        return res.json({
-            success: "true",
-            data: { tokenJsonData, chainId, blockNumberJsonData },
+        const chainName = chainList.data.filter((item) => item.chainId == chainId)[0].chainName;
+        WalletList_1.default.findOne({
+            walletAddress: walletAddress,
+            chainName: chainName,
+        }).then((model) => __awaiter(void 0, void 0, void 0, function* () {
+            if (!model)
+                res.json({ success: false, message: "The WalletList not exits!" });
+            model.isVisited = true;
+            yield model.save();
+        }));
+        TokenInfo_1.default.find({ walletAddress, chainId }).then((models) => {
+            return res.json({
+                success: "true",
+                data: { tokenJsonData, chainId, models },
+            });
         });
     }
-    const tokenItem = tokenJsonData[index];
-    const blockInfoItem = blockNumberJsonData[ind];
-    yield getTokenInfo(Number(chainId), walletAddress, blockInfoItem.date, tokenItem.name, tokenItem.logoURI, tokenItem.address, tokenItem.symbol, Number(blockInfoItem.value), tokenJsonData, blockNumberJsonData, index, ind, res);
+    else {
+        console.log(tokenJsonData.length);
+        console.log(index, ind);
+        const tokenItem = tokenJsonData[index];
+        const blockInfoItem = blockNumberJsonData[ind];
+        yield getTokenInfo(Number(chainId), walletAddress, blockInfoItem.date, tokenItem.name, tokenItem.logoURI, tokenItem.address, tokenItem.symbol, Number(blockInfoItem.value), tokenJsonData, blockNumberJsonData, index, ind, res);
+    }
 });
 const readTokenInfo = (chainId, chainName, walletAddress, res) => __awaiter(void 0, void 0, void 0, function* () {
     const rootPath = path.resolve(__dirname);
@@ -191,7 +206,28 @@ const readTokenInfo = (chainId, chainName, walletAddress, res) => __awaiter(void
                 return;
             }
             const blockNumberJsonData = JSON.parse(data);
-            getTokenInfoFunc(tokenJsonData, blockNumberJsonData, 0, 0, Number(chainId), walletAddress, res);
+            const chainName = chainList.data.filter((item) => item.chainId == chainId)[0].chainName;
+            yield WalletList_1.default.findOne({
+                walletAddress: walletAddress,
+                chainName: chainName,
+            }).then((model) => __awaiter(void 0, void 0, void 0, function* () {
+                if (!model)
+                    res.json({
+                        success: false,
+                        message: "The WalletList not exits!",
+                    });
+                if (model.isVisited == true) {
+                    yield TokenInfo_1.default.find({ walletAddress, chainId }).then((models) => {
+                        return res.json({
+                            success: "true",
+                            data: { tokenJsonData, chainId, models },
+                        });
+                    });
+                }
+                else {
+                    getTokenInfoFunc(tokenJsonData, blockNumberJsonData, 0, 0, Number(chainId), walletAddress, res);
+                }
+            }));
         }));
     }));
 });
