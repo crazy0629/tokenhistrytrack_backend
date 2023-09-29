@@ -38,4 +38,5 @@ router.post("/walletList/edit", wallet.editItem);
 router.post("/walletList/getAll", wallet.getAllWalletList);
 // Token Action Controller
 router.post("/tokenAction/viewData", token.viewData);
+router.post("/tokenAction/modifyDBData", token.modifyDBData);
 exports.default = router;

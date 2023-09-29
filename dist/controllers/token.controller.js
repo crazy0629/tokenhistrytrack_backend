@@ -35,8 +35,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.viewData = void 0;
+exports.modifyDBData = exports.viewData = void 0;
 const chainList = __importStar(require("../service/chainInfo.json"));
+const coinIdList = __importStar(require("../service/coinId.json"));
 const TokenInfo_1 = __importDefault(require("../models/TokenInfo"));
 const WalletList_1 = __importDefault(require("../models/WalletList"));
 const ethers = require("ethers");
@@ -45,6 +46,8 @@ const path = require("path");
 const axios = require("axios");
 const { ERC20_ABI } = require("../service/erc20-abi");
 const { CHAIN_ID_TO_RPC } = require("../service/chainIdToRpc");
+let priceFlag = 0;
+let priceValue = [];
 const viewData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const chainIdArray = chainList.data.filter((item) => item.chainName == req.body.chainName);
     if (!chainIdArray.length) {
@@ -55,47 +58,26 @@ const viewData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const tokenArrayInfo = yield readTokenInfo(Number(chainId), req.body.chainName, req.body.walletAddress, res);
 });
 exports.viewData = viewData;
-const getCoinId = (tokenName, tokenSymbol) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const url = `https://api.coingecko.com/api/v3/coins/list?include_platform=false`;
-        const response = yield axios.get(url);
-        const data = response.data;
-        for (let i = 0; i < data.length; i++) {
-            const coin = data[i];
-            if (coin.symbol.toLowerCase() == tokenSymbol.toLowerCase() &&
-                coin.name.replaceAll("-", " ").toLowerCase() == tokenName.toLowerCase()) {
-                return coin.id;
-            }
-        }
-        return null;
-    }
-    catch (error) {
-        return "";
-    }
+const modifyDBData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    TokenInfo_1.default.deleteMany({ chainId: 250 }).then((models) => __awaiter(void 0, void 0, void 0, function* () {
+        res.json({ success: true, models });
+    }));
 });
-const getTokenPriceAtDate = (coinId, date) => __awaiter(void 0, void 0, void 0, function* () {
+exports.modifyDBData = modifyDBData;
+const getTokenPriceList = (coinId) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        let year = Number(date.slice(0, 4));
-        let mon = Number(date.slice(5, 7)) + 1;
-        let day = 1;
-        if (mon == 12) {
-            mon = 1;
-            year += 1;
-        }
-        const startDate = new Date(year, mon - 1, day);
+        const startDate = new Date("2021-08-01");
         const startTimestamp = Math.floor(startDate.getTime() / 1000);
         const endTimestamp = Math.floor(Date.now() / 1000);
-        const url = `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart/range?vs_currency=usd&from=${startTimestamp}&to=${startTimestamp + 10000}`;
+        const url = `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart/range?vs_currency=usd&from=${startTimestamp}&to=${endTimestamp}`;
         const response = yield axios.get(url);
         const data = response.data;
         const prices = data.prices;
-        const tokenPrice = prices.find((price) => {
-            const timestamp = price[0];
-            const priceDate = new Date(timestamp);
-            return (priceDate.getMonth() === startDate.getMonth() &&
-                priceDate.getFullYear() === startDate.getFullYear());
-        });
-        return tokenPrice[1];
+        if (priceFlag == 0) {
+            priceFlag = 1;
+            priceValue = prices;
+        }
+        return priceValue;
     }
     catch (error) {
         return -1;
@@ -112,7 +94,7 @@ const getTokenInfo = (chainId, walletAddress, date, tokenName, tokenImage, token
         tokenSymbol: tokenSymbol,
         blockNumber: blockNumber,
     }).then((model) => __awaiter(void 0, void 0, void 0, function* () {
-        if (model && model.date != "now") {
+        if (model) {
             const tokenInfoData = {
                 tokenAmount: model.tokenAmount,
                 tokenPrice: model.tokenPrice,
@@ -125,31 +107,49 @@ const getTokenInfo = (chainId, walletAddress, date, tokenName, tokenImage, token
                 if (blockNumber != -2) {
                     tokenAmount = yield getTokenAmount(Number(chainId), tokenAddress, walletAddress, Number(blockNumber));
                 }
-                const coinId = yield getCoinId(tokenName, tokenSymbol);
-                const tokenPrice = yield getTokenPriceAtDate(coinId, date);
+                console.log(tokenName, tokenSymbol);
+                const coinId = coinIdList.data.filter((item) => item.symbol
+                    .replaceAll("-", " ")
+                    .replaceAll("(", " ")
+                    .replaceAll(")", " ")
+                    .toLowerCase() == tokenSymbol.toLowerCase() &&
+                    item.name
+                        .replaceAll("-", " ")
+                        .replaceAll("(", " ")
+                        .replaceAll(")", " ")
+                        .toLowerCase() == tokenName.toLowerCase())[0].id;
+                if (priceValue.length == 0) {
+                    yield getTokenPriceList(coinId);
+                }
+                let year = Number(date.slice(0, 4));
+                let mon = Number(date.slice(5, 7)) + 1;
+                let day = 1;
+                if (mon == 13) {
+                    mon = 1;
+                    year += 1;
+                }
+                const moment = new Date(year, mon - 1, day);
+                const filterData = priceValue.filter((item) => item[0] < moment.getTime());
+                let tokenPrice = -1;
+                if (filterData.length != 0)
+                    tokenPrice = filterData[filterData.length - 1][1];
                 const tokenInfoData = {
                     tokenAmount: tokenAmount,
                     tokenPrice: tokenPrice,
                 };
-                if (model && model.date == "now") {
-                    model.tokenImage = tokenImage;
-                    model.tokenPrice = tokenPrice;
-                    yield model.save();
-                }
-                else {
-                    model = new TokenInfo_1.default();
-                    model.chainId = chainId;
-                    model.walletAddress = walletAddress;
-                    model.date = date;
-                    model.tokenName = tokenName;
-                    model.tokenAddr = tokenAddress;
-                    model.tokenSymbol = tokenSymbol;
-                    model.blockNumber = blockNumber;
-                    model.tokenAmount = tokenAmount;
-                    model.tokenImage = tokenImage;
-                    model.tokenPrice = tokenPrice;
-                    yield model.save();
-                }
+                console.log(coinId, date, tokenAmount, tokenPrice);
+                model = new TokenInfo_1.default();
+                model.chainId = chainId;
+                model.walletAddress = walletAddress;
+                model.date = date;
+                model.tokenName = tokenName;
+                model.tokenAddr = tokenAddress;
+                model.tokenSymbol = tokenSymbol;
+                model.blockNumber = blockNumber;
+                model.tokenAmount = tokenAmount;
+                model.tokenImage = tokenImage;
+                model.tokenPrice = tokenPrice;
+                yield model.save();
                 yield getTokenInfoFunc(tokenJsonData, blockNumberJsonData, index, ind + 1, chainId, walletAddress, res);
             }), 1000);
         }
@@ -159,6 +159,8 @@ const getTokenInfoFunc = (tokenJsonData, blockNumberJsonData, index, ind, chainI
     if (ind == blockNumberJsonData.length) {
         ind = 0;
         index += 1;
+        priceFlag = 0;
+        priceValue = [];
     }
     if (index == tokenJsonData.length) {
         const chainName = chainList.data.filter((item) => item.chainId == chainId)[0].chainName;
@@ -173,7 +175,7 @@ const getTokenInfoFunc = (tokenJsonData, blockNumberJsonData, index, ind, chainI
         }));
         TokenInfo_1.default.find({ walletAddress, chainId }).then((models) => {
             return res.json({
-                success: "true",
+                success: true,
                 data: { tokenJsonData, chainId, models },
             });
         });
@@ -191,7 +193,7 @@ const readTokenInfo = (chainId, chainName, walletAddress, res) => __awaiter(void
     yield fs.readFile(`${rootPath}\\token_data\\${chainName}_tokens.json`, "utf8", (err, data) => __awaiter(void 0, void 0, void 0, function* () {
         if (err) {
             res.json({
-                success: "false",
+                success: false,
                 message: "Error happened while getting data",
             });
             return;
@@ -200,34 +202,36 @@ const readTokenInfo = (chainId, chainName, walletAddress, res) => __awaiter(void
         yield fs.readFile(`${rootPath}\\block_number\\${chainName}.json`, "utf8", (err, data) => __awaiter(void 0, void 0, void 0, function* () {
             if (err) {
                 res.json({
-                    success: "false",
+                    success: false,
                     message: "This chain is not available yet.",
                 });
                 return;
             }
-            const blockNumberJsonData = JSON.parse(data);
-            const chainName = chainList.data.filter((item) => item.chainId == chainId)[0].chainName;
-            yield WalletList_1.default.findOne({
-                walletAddress: walletAddress,
-                chainName: chainName,
-            }).then((model) => __awaiter(void 0, void 0, void 0, function* () {
-                if (!model)
-                    res.json({
-                        success: false,
-                        message: "The WalletList not exits!",
-                    });
-                if (model.isVisited == true) {
-                    yield TokenInfo_1.default.find({ walletAddress, chainId }).then((models) => {
-                        return res.json({
-                            success: "true",
-                            data: { tokenJsonData, chainId, models },
+            else {
+                const blockNumberJsonData = JSON.parse(data);
+                const chainName = chainList.data.filter((item) => item.chainId == chainId)[0].chainName;
+                yield WalletList_1.default.findOne({
+                    walletAddress: walletAddress,
+                    chainName: chainName,
+                }).then((model) => __awaiter(void 0, void 0, void 0, function* () {
+                    if (!model)
+                        res.json({
+                            success: false,
+                            message: "The WalletList not exits!",
                         });
-                    });
-                }
-                else {
-                    getTokenInfoFunc(tokenJsonData, blockNumberJsonData, 0, 0, Number(chainId), walletAddress, res);
-                }
-            }));
+                    if (model.isVisited == true) {
+                        yield TokenInfo_1.default.find({ walletAddress, chainId }).then((models) => {
+                            return res.json({
+                                success: true,
+                                data: { tokenJsonData, chainId, models },
+                            });
+                        });
+                    }
+                    else {
+                        getTokenInfoFunc(tokenJsonData, blockNumberJsonData, 5, 0, Number(chainId), walletAddress, res);
+                    }
+                }));
+            }
         }));
     }));
 });
