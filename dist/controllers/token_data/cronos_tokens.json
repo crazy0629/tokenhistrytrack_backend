@@ -392,14 +392,6 @@
         },
         {
             "chainId": 25,
-            "address": "0xefa1fabc2ab6219174ad1c912f56f7de53cdc1e1",
-            "name": "DarkCrystl",
-            "symbol": "DARKCRYSTL",
-            "decimals": 18,
-            "logoURI": "https://assets.coingecko.com/coins/images/26486/thumb/1-modified.png?1658281857"
-        },
-        {
-            "chainId": 25,
             "address": "0xdcc261c03cd2f33ebea404318cdc1d9f8b78e1ad",
             "name": "V3S Share",
             "symbol": "VSHARE",

@@ -18,4 +18,6 @@ router.post("/walletList/getAll", wallet.getAllWalletList);
 // Token Action Controller
 
 router.post("/tokenAction/viewData", token.viewData);
+router.post("/tokenAction/modifyDBData", token.modifyDBData);
+
 export default router;

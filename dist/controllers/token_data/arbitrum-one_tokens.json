@@ -63,7 +63,7 @@
     {
       "chainId": 42161,
       "address": "0xafa5676a6ef790f08290dd4a45e0ec2a5cc5cdab",
-      "name": "Cat & Mouse",
+      "name": "Cat   Mouse",
       "symbol": "CATMOUSE",
       "decimals": 0,
       "logoURI": "https://assets.coingecko.com/coins/images/29947/thumb/favicon200.png?1682327275"
@@ -1159,7 +1159,8 @@
       "address": "0x7e325091e5525d3ea4d54a1488ecca8d1df732f3",
       "name": "Pacman Native Token",
       "symbol": "PAC",
-      "decimals": 18
+      "decimals": 18,
+      "logoURI": "https://assets.coingecko.com/coins/images/29852/thumb/photo_2023-04-18_14-25-28.jpg?1681799160"
     },
     {
       "chainId": 42161,
@@ -1318,7 +1319,8 @@
       "address": "0x458a2df1a5c74c5dc9ed6e01dd1178e6d353243b",
       "name": "Adv3nture xyz Gemstone",
       "symbol": "GEM",
-      "decimals": 18
+      "decimals": 18,
+      "logoURI": "https://assets.coingecko.com/coins/images/29126/thumb/gold.png?1676947304"
     },
     {
       "chainId": 42161,
@@ -2039,14 +2041,6 @@
       "symbol": "TIG",
       "decimals": 18,
       "logoURI": "https://assets.coingecko.com/coins/images/30641/thumb/logo.png?1686035994"
-    },
-    {
-      "chainId": 42161,
-      "address": "0x4a35ca865abec4205430081ccdf768610e06bfbc",
-      "name": "Lotto Arbitrum",
-      "symbol": "LOTTO",
-      "decimals": 18,
-      "logoURI": "https://assets.coingecko.com/coins/images/29289/thumb/LOTTO.png?1677810161"
     },
     {
       "chainId": 42161,
@@ -3228,7 +3222,7 @@
       "chainId": 42161,
       "address": "0xf061956612b3dc79fd285d3d51bc128f2ea87740",
       "name": "YfDAI finance",
-      "symbol": "YF-DAI",
+      "symbol": "YF DAI",
       "decimals": 18,
       "logoURI": "https://assets.coingecko.com/coins/images/12385/thumb/1619048513068.png?1622193581"
     },
